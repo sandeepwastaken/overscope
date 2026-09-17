@@ -11,7 +11,7 @@
 `local` · `deterministic` · `no AI model` · `no API key` · `no account`
 
 ```bash
-uv tool install overscope-cli   # or: uv tool install git+https://github.com/sandeepwastaken/overscope
+uv tool install git+https://github.com/sandeepwastaken/overscope
 cd your-project
 overscope
 ```
@@ -95,10 +95,14 @@ Needs Python 3.12+ and git. With [uv](https://docs.astral.sh/uv/) or
 [pipx](https://pipx.pypa.io/), it installs as a single global command:
 
 ```bash
-uv tool install overscope-cli      # or: pipx install overscope-cli
-# before it's on PyPI, install straight from source:
+# straight from source (works today):
 uv tool install git+https://github.com/sandeepwastaken/overscope
+
+# or grab the wheel from the latest release:
+pipx install https://github.com/sandeepwastaken/overscope/releases/latest/download/overscope_cli-0.1.0-py3-none-any.whl
 ```
+
+Once it's on PyPI it'll also be `uv tool install overscope-cli` (or `pipx install overscope-cli`).
 
 Then run it from inside the repository your agent just worked in. It finds the most
 recent session that matches the repo, from `~/.claude/projects/` or
