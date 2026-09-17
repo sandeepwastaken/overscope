@@ -89,6 +89,28 @@ It's all heuristics and it says so. When it can't tell, it prints "unknown" rath
 inventing a reason — a vague instruction like "make it nicer" leaves unrelated files
 unknown, never falsely accused.
 
+## Why not just use git?
+
+`git diff` and `git status` show you *what* changed. They can't tell you whether it matches
+what you asked for — git never saw the request. You're the one holding the intent in your
+head, and checking a forty-file diff against it, line by line, is the slow part. It's also
+the part you skip at the end of a long session.
+
+That checking is turning into the real cost of working with agents. In a 2025 randomized
+controlled trial, experienced open-source developers were about **19% slower** when they
+used AI tools — even though they came away believing the tools had sped them up — and a
+large share of the lost time went into reviewing and fixing the model's output rather than
+writing code ([METR, 2025](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)).
+Surveys point the same way: roughly two-thirds of developers say they review more
+AI-generated code than they did a year ago, and many find it takes more effort to review
+than a human colleague's ([State of Code 2025](https://shiftmag.dev/state-of-code-2025-7978/)).
+
+Overscope goes after that cost directly. Instead of one more wall of diff to read, you get
+the request pulled out of the session, every changed file already sorted by whether it
+belongs, the risky edits flagged, and the agent's "done, all good" checked against what
+actually happened. git shows you the change. Overscope tells you whether it's the change you
+asked for.
+
 ## Install
 
 Needs Python 3.12+ and git. With [uv](https://docs.astral.sh/uv/) or
