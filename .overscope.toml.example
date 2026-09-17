@@ -1,0 +1,9 @@
+[overscope]
+# preferred_agent = "claude"
+ignored_rules = []
+ignored_paths = ["vendor/**"]
+trusted_paths = ["generated/**"]
+sensitive_paths = ["^infrastructure/production/"]
+
+[overscope.severity_overrides]
+# "code.todo_added" = "INFO"

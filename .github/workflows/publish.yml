@@ -1,0 +1,21 @@
+name: Publish to PyPI
+
+# Manual for now. Once you've set up a PyPI project + a Trusted Publisher for this
+# repo (pypi.org -> your project -> Publishing), you can switch this to trigger on
+# `release: [published]` for tag-to-PyPI releases. No API token needed with OIDC.
+on:
+  workflow_dispatch:
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv build
+      - uses: pypa/gh-action-pypi-publish@release/v1

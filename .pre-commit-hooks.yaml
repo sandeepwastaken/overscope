@@ -1,0 +1,17 @@
+# Use Overscope as a pre-commit guardrail. In a consuming repo's .pre-commit-config.yaml:
+#
+#   repos:
+#     - repo: https://github.com/<owner>/overscope
+#       rev: v0.1.0
+#       hooks:
+#         - id: overscope
+#
+# The hook audits the working tree against the latest agent session and blocks the
+# commit only when a HIGH-severity finding is present. Adjust --fail-on as you like.
+- id: overscope
+  name: overscope — agent-change audit
+  description: Audit what the coding agent changed vs. what was asked, before commit.
+  entry: overscope --fail-on high
+  language: python
+  pass_filenames: false
+  always_run: true

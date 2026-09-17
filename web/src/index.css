@@ -1,0 +1,217 @@
+/* Locally-bundled fonts — no network at runtime (Overscope is 100% local). */
+
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+@import "material-symbols/outlined.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --primary: 103 223 112;
+  --primary-container: 63 185 80;
+  --on-primary: 0 57 13;
+  --on-primary-container: 0 67 17;
+  --primary-fixed: 131 252 137;
+  --primary-fixed-dim: 103 223 112;
+  --inverse-primary: 0 110 33;
+  --surface-tint: 103 223 112;
+  --secondary: 83 216 226;
+  --secondary-container: 0 172 182;
+  --secondary-fixed: 118 245 255;
+  --secondary-fixed-dim: 83 216 226;
+  --on-secondary: 0 54 58;
+  --on-secondary-container: 0 57 61;
+  --tertiary: 255 180 172;
+  --tertiary-container: 255 122 111;
+  --tertiary-fixed: 255 218 214;
+  --tertiary-fixed-dim: 255 180 172;
+  --on-tertiary: 105 0 7;
+  --on-tertiary-container: 121 0 9;
+  --error: 255 180 171;
+  --error-container: 147 0 10;
+  --on-error: 105 0 5;
+  --on-error-container: 255 218 214;
+  --surface: 16 20 26;
+  --surface-dim: 16 20 26;
+  --surface-bright: 53 57 64;
+  --surface-container-lowest: 10 14 20;
+  --surface-container-low: 24 28 34;
+  --surface-container: 28 32 38;
+  --surface-container-high: 38 42 49;
+  --surface-container-highest: 49 53 60;
+  --surface-variant: 49 53 60;
+  --on-surface: 223 226 235;
+  --on-surface-variant: 189 202 184;
+  --outline: 135 148 132;
+  --outline-variant: 62 74 60;
+  --background: 16 20 26;
+  --on-background: 223 226 235;
+  --inverse-surface: 223 226 235;
+  --inverse-on-surface: 45 49 55;
+
+  --add-wash: rgba(63, 185, 80, 0.15);
+  --add-gutter: rgba(63, 185, 80, 0.25);
+  --del-wash: rgba(248, 81, 73, 0.15);
+  --del-gutter: rgba(248, 81, 73, 0.22);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --primary: 33 136 56;
+  --primary-container: 46 160 67;
+  --on-primary: 255 255 255;
+  --on-primary-container: 0 51 13;
+  --primary-fixed: 46 160 67;
+  --primary-fixed-dim: 33 136 56;
+  --inverse-primary: 126 231 135;
+  --surface-tint: 33 136 56;
+  --secondary: 15 118 126;
+  --secondary-container: 19 139 148;
+  --secondary-fixed: 15 118 126;
+  --secondary-fixed-dim: 15 118 126;
+  --on-secondary: 255 255 255;
+  --on-secondary-container: 0 45 48;
+  --tertiary: 190 45 37;
+  --tertiary-container: 255 224 221;
+  --tertiary-fixed: 255 224 221;
+  --tertiary-fixed-dim: 190 45 37;
+  --on-tertiary: 255 255 255;
+  --on-tertiary-container: 122 20 14;
+  --error: 190 45 37;
+  --error-container: 255 224 221;
+  --on-error: 255 255 255;
+  --on-error-container: 122 20 14;
+  --surface: 246 248 250;
+  --surface-dim: 236 239 242;
+  --surface-bright: 255 255 255;
+  --surface-container-lowest: 255 255 255;
+  --surface-container-low: 255 255 255;
+  --surface-container: 240 243 246;
+  --surface-container-high: 233 237 241;
+  --surface-container-highest: 224 229 234;
+  --surface-variant: 224 229 234;
+  --on-surface: 24 30 37;
+  --on-surface-variant: 74 86 78;
+  --outline: 110 122 114;
+  --outline-variant: 208 215 222;
+  --background: 246 248 250;
+  --on-background: 24 30 37;
+  --inverse-surface: 45 49 55;
+  --inverse-on-surface: 240 243 246;
+  --add-wash: rgba(46, 160, 67, 0.14);
+  --add-gutter: rgba(46, 160, 67, 0.3);
+  --del-wash: rgba(207, 66, 58, 0.12);
+  --del-gutter: rgba(207, 66, 58, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+body {
+  overscroll-behavior: none;
+  background: rgb(var(--surface));
+  color: rgb(var(--on-surface));
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: 12px;
+}
+::selection {
+  background: rgb(var(--primary) / 0.22);
+  color: rgb(var(--primary));
+}
+
+.font-code-lg,
+.font-code-md,
+.font-code-sm,
+.font-label-mono,
+code,
+pre,
+kbd {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
+  user-select: none;
+  vertical-align: middle;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button:focus-visible,
+input:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 1px solid rgb(var(--primary));
+  outline-offset: 1px;
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: rgb(var(--surface-container-highest));
+  border-radius: 4px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-none::-webkit-scrollbar {
+  display: none;
+}
+
+.app-drag {
+  -webkit-app-region: drag;
+}
+.app-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.animate-ping {
+  animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

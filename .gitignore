@@ -1,0 +1,30 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+
+# Node / web
+node_modules/
+
+# Tauri build output + bundled sidecar binary (built locally, not committed)
+web/src-tauri/target/
+web/src-tauri/gen/
+web/src-tauri/binaries/
+
+# Google Stitch design export — reference only, never shipped
+design-reference/
+
+# Tooling caches
+.impeccable/
+
+# OS / editor cruft
+.DS_Store
+
+# Local user config
+.overscope.toml

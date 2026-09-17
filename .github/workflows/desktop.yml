@@ -1,0 +1,47 @@
+name: Desktop bundles
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS
+            os: macos-14
+          - name: Windows
+            os: windows-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install web dependencies
+        working-directory: web
+        run: npm ci
+      - name: Test analyzer
+        run: uv run pytest
+      - name: Build native bundle
+        working-directory: web
+        run: npm run desktop:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: overscope-${{ runner.os }}
+          path: web/src-tauri/target/release/bundle/**
+          if-no-files-found: error
