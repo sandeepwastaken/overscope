@@ -19,7 +19,30 @@ JSON before returning it to React.
 
 ## Development
 
-Prerequisites are Node 20+, Rust stable, Git, Python 3.12+, and uv.
+There are two ways to run it, depending on whether you want the real desktop app or just
+the interface.
+
+### Browser preview (no Rust)
+
+The fast path. Runs the React UI against bundled sample data, so it needs nothing but
+Node:
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+### The desktop app
+
+This compiles the native Tauri (Rust) shell and freezes the Python analyzer into a
+sidecar, so it needs two more tools:
+
+- **Rust** (stable) — `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`, then
+  reopen your terminal. On Windows, install rustup from <https://rustup.rs/>.
+- **uv** — <https://docs.astral.sh/uv/> (used to build the Python sidecar).
+
+Then:
 
 ```bash
 cd web
@@ -27,11 +50,9 @@ npm install
 npm run desktop:dev
 ```
 
-Browser-only visual development uses the adversarial sample and needs no Rust toolchain:
-
-```bash
-npm run dev
-```
+The first `desktop:dev` compiles the Rust shell from scratch and can take a few minutes;
+later runs are quick. If Rust or uv is missing, the command tells you which one and how to
+install it instead of failing with a compiler error.
 
 ## Distribution
 

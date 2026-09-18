@@ -8,9 +8,9 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "desktop:dev": "npm run sidecar && tauri dev",
+    "desktop:dev": "node scripts/preflight.mjs && npm run sidecar && tauri dev",
     "sidecar": "uv run python ../scripts/build_sidecar.py",
-    "desktop:build": "npm run sidecar && tauri build"
+    "desktop:build": "node scripts/preflight.mjs && npm run sidecar && tauri build"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
