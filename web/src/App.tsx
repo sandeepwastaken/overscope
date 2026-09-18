@@ -232,13 +232,8 @@ function TopBar({
   const repoName = report.repository.split("/").slice(-2).join("/");
   const branch = status?.branch ?? report.branch ?? "detached";
   return (
-    <header className="app-drag fixed left-0 right-0 top-0 z-50 flex h-14 select-none items-center justify-between border-b border-outline-variant/40 bg-surface-container-lowest/95 px-space-md backdrop-blur-md">
+    <header className="app-drag fixed left-0 right-0 top-0 z-50 flex h-14 select-none items-center justify-between border-b border-outline-variant/40 bg-surface-container-lowest/95 pl-[80px] pr-space-md backdrop-blur-md">
       <div className="flex items-center gap-space-md">
-        <div className="flex items-center gap-space-xs pl-space-xs pr-space-sm">
-          {["#ff5f56", "#ffbd2e", "#27c93f"].map((c) => (
-            <span key={c} className="inline-block h-3 w-3 rounded-full opacity-80" style={{ background: c }} />
-          ))}
-        </div>
         <div className="flex items-center gap-space-sm">
           <Logo size={30} />
           <span className="font-headline-sm text-headline-sm tracking-[0.18em] text-on-surface">OVERSCOPE</span>

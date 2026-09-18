@@ -24,12 +24,7 @@ export function FirstLaunch({
       className="flex h-full min-w-[760px] flex-col bg-surface"
       style={{ backgroundImage: "radial-gradient(circle at 50% 22%, rgb(var(--primary) / 0.07), transparent 42%)" }}
     >
-      <header className="app-drag flex h-13 shrink-0 items-center gap-space-md border-b border-outline-variant/40 bg-surface-container-lowest px-space-md py-space-md">
-        <div className="flex items-center gap-space-xs">
-          {["#ff5f56", "#ffbd2e", "#27c93f"].map((c) => (
-            <span key={c} className="inline-block h-3 w-3 rounded-full opacity-80" style={{ background: c }} />
-          ))}
-        </div>
+      <header className="app-drag flex h-13 shrink-0 items-center gap-space-md border-b border-outline-variant/40 bg-surface-container-lowest pl-[80px] pr-space-md py-space-md">
         <span className="font-label-mono text-label-mono uppercase tracking-[0.12em] text-on-surface-variant">Workspace // Idle</span>
         <div className="ml-auto flex items-center gap-space-sm font-label-mono text-label-mono">
           <span className="flex items-center gap-space-xs rounded bg-surface-container px-space-md py-space-xs text-on-surface-variant">
