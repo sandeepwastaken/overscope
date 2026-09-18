@@ -33,38 +33,11 @@ Overscope reads the agent's own session, lines it up against the real git diff, 
 shows you where the two disagree — before you commit. It runs locally in about a
 second, with no model, no API key, and no account.
 
-```text
-OVERSCOPE   claude · session 2m ago · acme/web-api · 4 files +10 −9
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<p align="center">
+  <img src="docs/screenshots/cli-report.png" width="820" alt="Overscope's terminal report: the intent read from the session, a scope table marking each changed file in-scope, adjacent, or out-of-scope with a reason, severity flags for the deleted test, new dependency, touched auth file and debug line, and the agent's 'done, 2 files, tests pass' checked against the real 4-file diff">
+</p>
 
-▌ INTENT ──────────────────────────────────────────────── confidence 95%
-  Add pagination to the users endpoint in src/api/users.js. Only touch the
-  users route; don't change auth.
-  → operation add · paths src/api/users.js · constraints 2
-
-▌ SCOPE ─────────────────────────────────────────────────────── 4 changed
-  ████████████████████████████  ✓ 2 in · ≈ 1 adjacent · ! 1 out of scope
-
-   scope           file                    Δ       why
-   ! out of scope  src/auth/token.js       +2 −1   the request asked not to change: auth
-   ≈ adjacent      package.json            +2 −1   config may support the new work
-   ✓ in scope      src/api/users.js        +6 −2   path is explicitly named in the request
-   ✓ in scope      test/users.test.js      +0 −5   path matches intent term(s): users
-
-▌ FLAGS ─────────────────────────────────── 1 high · 2 medium · 1 low
-  █ HIGH    Test coverage deleted            test/users.test.js
-  ▓ MEDIUM  Dependency introduced            package.json  (paginate-lib, unverified)
-  ▓ MEDIUM  Sensitive / security path changed  src/auth/token.js
-  ▒ LOW     Debug statement added            src/api/users.js:2
-
-▌ AGENT SAID VS DID ─────────────────────────────────────────────────────
-  ✗ mismatch     Changed-file count    the agent said 2 files, git shows 4
-  ✗ mismatch     Undisclosed changes   wrote 3 files it never named
-  ⚠ unverified   Tests pass            claimed, but no test run in the session
-
-▌ SUMMARY ───────────────────────────────────────────────────────────────
-  ✗ NEEDS REVIEW   4 changed files; 1 high-severity flag before commit
-```
+<sub>The same audit in the terminal — <code>overscope</code>, one command, no window needed.</sub>
 
 ## What it actually checks
 
